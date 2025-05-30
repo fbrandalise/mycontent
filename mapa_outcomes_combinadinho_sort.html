@@ -1,0 +1,341 @@
+
+<html>
+<head>
+    <title>Mapa de Outcomes + Tabela (com ordenação)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { text-align: center; }
+        .grafico { margin-bottom: 50px; }
+        .tabela { margin-top: 50px; }
+    </style>
+    <!-- Incluir DataTables CSS -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/>
+</head>
+<body>
+    <h1>Mapa de Outcomes: Importância vs Satisfação</h1>
+    <div class="grafico">
+        <div>                        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-2.4.1.min.js"></script>                <div id="a3a00a08-f925-46f1-adc1-cf0f08bd3e67" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("a3a00a08-f925-46f1-adc1-cf0f08bd3e67")) {                    Plotly.newPlot(                        "a3a00a08-f925-46f1-adc1-cf0f08bd3e67",                        [{"hovertemplate":"<b>%{hovertext}</b><br><br>Importância=%{x}<br>Satisfação=%{y}<extra></extra>","hovertext":["Aumentar a capacidade de antecipar tendências sazonais","Aumentar a facilidade de acesso das informações fiscais para o contador","Aumentar a precisão da previsão de demanda para cada produto","Aumentar a precisão do preenchimento da ficha técnica do anúncio","Aumentar a previsibilidade do fluxo de caixa mensal","Aumentar a previsibilidade dos compromissos financeiros futuros","Aumentar a qualidade percebida do anúncio através de imagens profissionais","Aumentar a satisfação do cliente com o suporte pós-venda","Aumentar a taxa de pedidos processados dentro do prazo disponível","Aumentar o controle sobre despesas envolvendo as logísticas de envio","Aumentar o controle sobre todas as taxas por pedido pagas para os marketplaces (frete, taxa do marketplace, etc)","Aumentar o número de avaliações positivas pelos compradores nos marketplaces","Aumentar o número de vendas","Aumentar o número de visualizações dos anúncios","Aumentar o retorno sobre investimento em anúncios patrocinados e pagos","Aumentar o ticket médio por venda","Reduzir  o prazo de entrega de um pedido para fornecedor","Reduzir a dependência de fontes únicas de financiamento","Reduzir a ocorrência de danos durante o transporte","Reduzir a ocorrência de produtos indisponíveis durante picos de demanda","Reduzir a quantidade de erros de entrada de estoque","Reduzir a quantidade de furos de estoque","Reduzir a taxa de trocas e devolução de produtos","Reduzir as taxas pagas para plataformas e processadores de pagamento","Reduzir atrasos e erros de conciliações bancárias","Reduzir erros na separação de produtos para envio","Reduzir multas e juros por atrasos em obrigações fiscais","Reduzir o capital imobilizado em estoque de baixa rotatividade","Reduzir o custo de armazenamento por item mantido em estoque","Reduzir o custo de envio por pedido sem comprometer prazos","Reduzir o número de pedidos cancelados por falta de estoque","Reduzir o número de pedidos emergenciais aos fornecedores","Reduzir o tempo dedicado à contagem e verificação de estoque","Reduzir o tempo dedicado à regularização de pendências tributárias","Reduzir o tempo entre a identificação da necessidade e obtenção de crédito para seu negócio","Reduzir o tempo entre recebimento do pedido e envio ao cliente","Reduzir o tempo entre venda e recebimento do valor","Reduzir o tempo gasto enviando dados para o contador","Reduzir o tempo gasto no pagamento de tributos recorrentes","Reduzir o tempo gasto para o cadastro de um anúncio","Reduzir o tempo gasto realizando conciliações bancárias","Reduzir o tempo gerando informações contábeis (DRE por exemplo)","Reduzir o tempo médio de resposta para questionamentos pós-venda","Reduzir o tempo médio de resposta para questionamentos pré-venda","Reduzir o tempo necessário para conferência e entrada de produtos no estoque","Reduzir o tempo necessário para gerir um grande volume de anúncios","Reduzir o tempo para gerar anúncios em diferentes marketplaces","Reduzir problemas com emissão de notas fiscais"],"legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"type":"scatter","x":[3.8620689655172415,3.8793103448275863,4.060344827586207,3.1379310344827585,4.275862068965517,4.129310344827586,3.206896551724138,4.008620689655173,3.7758620689655173,3.836206896551724,3.7672413793103448,3.5689655172413794,4.362068965517241,3.206896551724138,3.2672413793103448,4.163793103448276,3.7844827586206895,3.8189655172413794,3.7155172413793105,4.043103448275862,4.241379310344827,4.189655172413793,3.75,3.9482758620689653,3.9913793103448274,3.8793103448275863,4.077586206896552,3.9310344827586206,3.793103448275862,3.836206896551724,3.8017241379310347,3.810344827586207,4.146551724137931,3.8620689655172415,3.7758620689655173,3.7758620689655173,3.9741379310344827,3.7672413793103448,3.7155172413793105,3.25,3.9482758620689653,4.0,3.8275862068965516,3.8448275862068964,4.181034482758621,3.1551724137931036,3.2672413793103448,4.224137931034483],"xaxis":"x","y":[2.836206896551724,3.086206896551724,2.9224137931034484,2.5258620689655173,2.8793103448275863,2.836206896551724,2.5172413793103448,2.7758620689655173,2.8879310344827585,2.913793103448276,2.6379310344827585,2.8275862068965516,2.8017241379310347,2.5086206896551726,2.5344827586206895,2.7327586206896552,2.8017241379310347,2.8275862068965516,2.9310344827586206,2.9310344827586206,2.8793103448275863,2.7241379310344827,2.7327586206896552,2.7758620689655173,3.0172413793103448,2.8879310344827585,2.9482758620689653,2.9741379310344827,2.913793103448276,2.913793103448276,2.9224137931034484,2.9913793103448274,2.9224137931034484,2.793103448275862,2.7586206896551726,2.896551724137931,2.8189655172413794,3.1206896551724137,3.0517241379310347,2.5258620689655173,2.7413793103448274,2.810344827586207,2.793103448275862,2.7758620689655173,2.9051724137931036,2.5775862068965516,2.5172413793103448,3.4310344827586206],"yaxis":"y"}],                        {"annotations":[{"bgcolor":"white","bordercolor":"blue","borderpad":4,"borderwidth":1,"font":{"color":"blue","size":16},"showarrow":false,"text":"UNDER SERVED","x":3.5,"y":1},{"bgcolor":"white","bordercolor":"red","borderpad":4,"borderwidth":1,"font":{"color":"red","size":16},"showarrow":false,"text":"OVER SERVED","x":3.5,"y":4.5},{"bgcolor":"white","bordercolor":"green","borderpad":4,"borderwidth":1,"font":{"color":"green","size":16},"showarrow":false,"text":"APPROPRIATELY SERVED","x":2,"y":1}],"legend":{"tracegroupgap":0},"shapes":[{"line":{"color":"red","dash":"dash","width":2},"type":"line","x0":0,"x1":5,"y0":0,"y1":5},{"line":{"color":"blue","dash":"dash","width":2},"type":"line","x0":2.5,"x1":5,"y0":0,"y1":5},{"fillcolor":"red","layer":"below","line":{"width":0},"opacity":0.1,"path":"M0,5 L5,5 L5,0 Z","type":"rect","x0":0,"x1":5,"y0":0,"y1":5}],"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"title":{"text":"Mapa de Outcomes: Importância vs Satisfação (com tabela abaixo)"},"xaxis":{"anchor":"y","domain":[0.0,1.0],"range":[0,5],"title":{"text":"Importância"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"range":[0,5],"title":{"text":"Satisfação"}}},                        {"responsive": true}                    )                };                            </script>        </div>
+    </div>
+    <h2>Tabela de Outcomes e Classificação</h2>
+    <div class="tabela">
+        <table class="dataframe display">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Outcome</th>
+      <th>Importancia</th>
+      <th>Satisfação</th>
+      <th>Classificação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Aumentar a capacidade de antecipar tendências sazonais</td>
+      <td>3.862069</td>
+      <td>2.836207</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo entre recebimento do pedido e envio ao cliente</td>
+      <td>3.775862</td>
+      <td>2.896552</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o número de pedidos emergenciais aos fornecedores</td>
+      <td>3.810345</td>
+      <td>2.991379</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o número de pedidos cancelados por falta de estoque</td>
+      <td>3.801724</td>
+      <td>2.922414</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o custo de envio por pedido sem comprometer prazos</td>
+      <td>3.836207</td>
+      <td>2.913793</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o custo de armazenamento por item mantido em estoque</td>
+      <td>3.793103</td>
+      <td>2.913793</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o capital imobilizado em estoque de baixa rotatividade</td>
+      <td>3.931034</td>
+      <td>2.974138</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir erros na separação de produtos para envio</td>
+      <td>3.879310</td>
+      <td>2.887931</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir atrasos e erros de conciliações bancárias</td>
+      <td>3.991379</td>
+      <td>3.017241</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo para gerar anúncios em diferentes marketplaces</td>
+      <td>3.267241</td>
+      <td>2.517241</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir a taxa de trocas e devolução de produtos</td>
+      <td>3.750000</td>
+      <td>2.732759</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo gasto enviando dados para o contador</td>
+      <td>3.767241</td>
+      <td>3.120690</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo gasto no pagamento de tributos recorrentes</td>
+      <td>3.715517</td>
+      <td>3.051724</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo gasto para o cadastro de um anúncio</td>
+      <td>3.250000</td>
+      <td>2.525862</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir a ocorrência de danos durante o transporte</td>
+      <td>3.715517</td>
+      <td>2.931034</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo dedicado à regularização de pendências tributárias</td>
+      <td>3.862069</td>
+      <td>2.793103</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir a dependência de fontes únicas de financiamento</td>
+      <td>3.818966</td>
+      <td>2.827586</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo médio de resposta para questionamentos pós-venda</td>
+      <td>3.827586</td>
+      <td>2.793103</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar a facilidade de acesso das informações fiscais para o contador</td>
+      <td>3.879310</td>
+      <td>3.086207</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo necessário para gerir um grande volume de anúncios</td>
+      <td>3.155172</td>
+      <td>2.577586</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar a precisão do preenchimento da ficha técnica do anúncio</td>
+      <td>3.137931</td>
+      <td>2.525862</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo médio de resposta para questionamentos pré-venda</td>
+      <td>3.844828</td>
+      <td>2.775862</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar a qualidade percebida do anúncio através de imagens profissionais</td>
+      <td>3.206897</td>
+      <td>2.517241</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir  o prazo de entrega de um pedido para fornecedor</td>
+      <td>3.784483</td>
+      <td>2.801724</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo entre a identificação da necessidade e obtenção de crédito para seu negócio</td>
+      <td>3.775862</td>
+      <td>2.758621</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar o controle sobre despesas envolvendo as logísticas de envio</td>
+      <td>3.836207</td>
+      <td>2.913793</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar o controle sobre todas as taxas por pedido pagas para os marketplaces (frete, taxa do marketplace, etc)</td>
+      <td>3.767241</td>
+      <td>2.637931</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar o número de avaliações positivas pelos compradores nos marketplaces</td>
+      <td>3.568966</td>
+      <td>2.827586</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar o número de visualizações dos anúncios</td>
+      <td>3.206897</td>
+      <td>2.508621</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar o retorno sobre investimento em anúncios patrocinados e pagos</td>
+      <td>3.267241</td>
+      <td>2.534483</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar a taxa de pedidos processados dentro do prazo disponível</td>
+      <td>3.775862</td>
+      <td>2.887931</td>
+      <td>APPROPRIATELY SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo entre venda e recebimento do valor</td>
+      <td>3.974138</td>
+      <td>2.818966</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo necessário para conferência e entrada de produtos no estoque</td>
+      <td>4.181034</td>
+      <td>2.905172</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo gerando informações contábeis (DRE por exemplo)</td>
+      <td>4.000000</td>
+      <td>2.810345</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo gasto realizando conciliações bancárias</td>
+      <td>3.948276</td>
+      <td>2.741379</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir as taxas pagas para plataformas e processadores de pagamento</td>
+      <td>3.948276</td>
+      <td>2.775862</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir multas e juros por atrasos em obrigações fiscais</td>
+      <td>4.077586</td>
+      <td>2.948276</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir a quantidade de furos de estoque</td>
+      <td>4.189655</td>
+      <td>2.724138</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir a quantidade de erros de entrada de estoque</td>
+      <td>4.241379</td>
+      <td>2.879310</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir a ocorrência de produtos indisponíveis durante picos de demanda</td>
+      <td>4.043103</td>
+      <td>2.931034</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar o ticket médio por venda</td>
+      <td>4.163793</td>
+      <td>2.732759</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar o número de vendas</td>
+      <td>4.362069</td>
+      <td>2.801724</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar a satisfação do cliente com o suporte pós-venda</td>
+      <td>4.008621</td>
+      <td>2.775862</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar a previsibilidade dos compromissos financeiros futuros</td>
+      <td>4.129310</td>
+      <td>2.836207</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar a previsibilidade do fluxo de caixa mensal</td>
+      <td>4.275862</td>
+      <td>2.879310</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Aumentar a precisão da previsão de demanda para cada produto</td>
+      <td>4.060345</td>
+      <td>2.922414</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir o tempo dedicado à contagem e verificação de estoque</td>
+      <td>4.146552</td>
+      <td>2.922414</td>
+      <td>UNDER SERVED</td>
+    </tr>
+    <tr>
+      <td>Reduzir problemas com emissão de notas fiscais</td>
+      <td>4.224138</td>
+      <td>3.431034</td>
+      <td>UNDER SERVED</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+    <!-- Incluir jQuery e DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <!-- Ativar DataTables -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('table.display').DataTable({
+                "paging": false,
+                "info": false,
+                "ordering": true,
+                "order": []
+            });
+        });
+    </script>
+</body>
+</html>
