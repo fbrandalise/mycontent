@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Opportunity Map - Baixo vs Alto Volume</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  <style>
+    .score-low { background-color: #d4edda; }      /* verde claro */
+    .score-medium { background-color: #fff3cd; }   /* amarelo claro */
+    .score-high { background-color: #f8d7da; }     /* vermelho claro */
+  </style>
+</head>
+<body>
+  <h2>Opportunity Map - Segmentos</h2>
+  
+  <label for="segmentSelect"><b>Escolha o Segmento:</b></label>
+  <select id="segmentSelect">
+    <option value="baixo">Baixo Volume</option>
+    <option value="alto">Alto Volume</option>
+  </select>
+
+  <div id="chart" style="width:100%;height:70vh;margin-top:20px;"></div>
+
+  <h2>Tabela de Outcomes</h2>
+  <table id="outcomesTable" class="display" style="width:100%">
+    <thead>
+      <tr>
+        <th>Outcome</th>
+        <th>Importância</th>
+        <th>Satisfação</th>
+        <th>Opportunity Score</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const outcomes = [
+      {name: "Aumentar o controle da criação de cupons e descontos em múltiplos marketplaces", baixo: {imp: 7.86, sat: 5.69, score: 10.02}, alto: {imp: 7.47, sat: 5.01, score: 9.94}},
+      {name: "Aumentar o nível de controle e visibilidade sobre devoluções e trocas de todos marketplaces", baixo: {imp: 8.74, sat: 5.89, score: 11.59}, alto: {imp: 8.66, sat: 5.12, score: 12.21}},
+      {name: "Aumentar a clareza nas comparações entre meus produtos e os mais vendidos nos marketplaces, considerando preço e avaliação", baixo: {imp: 8.69, sat: 5.28, score: 12.10}, alto: {imp: 8.41, sat: 4.59, score: 12.23}},
+      {name: "Reduzir o tempo necessário publicar e gerenciar anúncios em múltiplos marketplaces", baixo: {imp: 9.04, sat: 6.49, score: 11.60}, alto: {imp: 9.09, sat: 5.72, score: 12.46}},
+      {name: "Aumentar a visibilidade sobre o preço e a posição dos meus anúncios nos marketplaces comparado aos concorrentes diretos", baixo: {imp: 8.60, sat: 5.33, score: 11.87}, alto: {imp: 8.44, sat: 4.39, score: 12.50}},
+      {name: "Reduzir o tempo para detectar e agir em rupturas de estoque", baixo: {imp: 8.90, sat: 6.06, score: 11.74}, alto: {imp: 8.97, sat: 5.37, score: 12.57}},
+      {name: "Aumentar a visibilidade dos recebíveis futuros de todos os marketplaces", baixo: {imp: 8.79, sat: 5.69, score: 11.89}, alto: {imp: 8.69, sat: 4.76, score: 12.61}},
+      {name: "Reduzir o esforço para conciliar vendas e pagamentos recebidos dos marketplaces", baixo: {imp: 8.76, sat: 5.69, score: 11.83}, alto: {imp: 8.75, sat: 4.37, score: 13.13}},
+      {name: "Aumentar a clareza na comparação de taxas dos pedidos de todos os marketplaces", baixo: {imp: 8.81, sat: 5.48, score: 12.13}, alto: {imp: 8.92, sat: 4.65, score: 13.20}},
+      {name: "Reduzir o tempo necessário para identificar divergências entre valores de venda e repasse pelos marketplaces", baixo: {imp: 8.88, sat: 5.37, score: 12.40}, alto: {imp: 9.00, sat: 4.09, score: 13.91}},
+      {name: "Diminuir o esforço para criar e gerir ads (publicidade) em múltiplos marketplaces", baixo: {imp: 8.12, sat: 5.42, score: 10.83}, alto: {imp: 7.68, sat: 4.86, score: 10.51}},
+      {name: "Aumentar o nível de controle sobre múltiplos depósitos e localizações de estoque", baixo: {imp: 8.13, sat: 6.05, score: 10.22}, alto: {imp: 8.12, sat: 5.61, score: 10.64}},
+      {name: "Aumentar a visibilidade do status de entrega dos pedidos de todos marketplaces", baixo: {imp: 8.67, sat: 6.17, score: 11.16}, alto: {imp: 8.37, sat: 5.83, score: 10.91}},
+      {name: "Reduzir o tempo necessário para localizar os produtos de cada pedido de vários marketplaces", baixo: {imp: 8.59, sat: 6.81, score: 10.38}, alto: {imp: 8.70, sat: 6.35, score: 11.05}},
+      {name: "Reduzir o esforço para planejar campanhas promocionais em múltiplos marketplaces", baixo: {imp: 8.14, sat: 5.66, score: 10.63}, alto: {imp: 8.00, sat: 4.94, score: 11.05}},
+      {name: "Reduzir o esforço manual necessário para emitir notas fiscais e etiquetas em vários marketplaces", baixo: {imp: 8.96, sat: 6.83, score: 11.09}, alto: {imp: 8.87, sat: 6.53, score: 11.20}},
+      {name: "Reduzir o tempo gasto para importar pedidos de todos os marketplaces", baixo: {imp: 9.01, sat: 7.14, score: 10.87}, alto: {imp: 8.98, sat: 6.62, score: 11.33}},
+      {name: "Aumentar a visibilidade por etapa (pedido, entrega, financeiro), para acompanhamento da performance da operação de todos marketplaces", baixo: {imp: 8.73, sat: 6.13, score: 11.32}, alto: {imp: 8.49, sat: 5.61, score: 11.37}},
+      {name: "Reduzir o tempo necessário para emitir etiquetas logísticas para cada marketplace", baixo: {imp: 8.77, sat: 6.57, score: 10.98}, alto: {imp: 8.89, sat: 6.32, score: 11.46}},
+      {name: "Reduzir o tempo de resposta a atrasos e cancelamentos de pedidos nos marketplaces", baixo: {imp: 8.75, sat: 6.30, score: 11.20}, alto: {imp: 8.63, sat: 5.79, score: 11.47}},
+      {name: "Reduzir o esforço necessário para conferir os pedidos de vários marketplaces antes da expedição", baixo: {imp: 8.61, sat: 6.77, score: 10.44}, alto: {imp: 8.82, sat: 6.14, score: 11.49}},
+      {name: "Reduzir o tempo de reação a mudanças de preço dos concorrentes", baixo: {imp: 8.43, sat: 5.37, score: 11.48}, alto: {imp: 8.17, sat: 4.61, score: 11.73}},
+      {name: "Reduzir o tempo necessário para configurar regras de precificação dos anúncios em múltiplos marketplaces", baixo: {imp: 8.79, sat: 6.21, score: 11.38}, alto: {imp: 8.68, sat: 5.48, score: 11.87}},
+      {name: "Reduzir o tempo gasto para responder a perguntas dos clientes nos diferentes marketplaces", baixo: {imp: 8.62, sat: 5.47, score: 11.76}, alto: {imp: 8.54, sat: 5.13, score: 11.94}}
+    ];
+
+    let dataTable;
+
+    function getScoreClass(score) {
+      if (score < 11) return "score-low";
+      if (score < 12) return "score-medium";
+      return "score-high";
+    }
+
+    function render(segment) {
+      if (dataTable) {
+        dataTable.destroy();  // 🔑 destrói antes de atualizar a tabela
+      }
+
+      const tableBody = $('#outcomesTable tbody');
+      tableBody.empty();
+
+      const trace = {
+        x: outcomes.map(o => o[segment].imp),
+        y: outcomes.map(o => o[segment].sat),
+        text: outcomes.map(o => o.name + "<br>Score: " + o[segment].score),
+        mode: 'markers',
+        marker: { size: 10, color: 'red' },
+        type: 'scatter'
+      };
+
+      const underserved = { type: 'line', x0: 5, y0: 0, x1: 10, y1: 10, line: {color: 'red', dash: 'solid'} };
+      const overserved = { type: 'line', x0: 0, y0: 0, x1: 10, y1: 10, line: {color: 'red', dash: 'solid'} };
+
+      const layout = {
+        xaxis: {title: 'Importância', range: [0,10]},
+        yaxis: {title: 'Satisfação', range: [0,10]},
+        shapes: [underserved, overserved],
+        annotations: [
+          {x: 2, y: 6, text: "overserved", showarrow: false, font: {color: "red"}},
+          {x: 8, y: 3, text: "underserved", showarrow: false, font: {color: "red"}},
+          {x: 3.5, y: 2.5, text: "appropriately served", showarrow: false, font: {color: "red"}}
+        ]
+      };
+
+      Plotly.newPlot('chart', [trace], layout);
+
+      outcomes.forEach(o => {
+        const scoreClass = getScoreClass(o[segment].score);
+        tableBody.append(`<tr>
+          <td>${o.name}</td>
+          <td>${o[segment].imp}</td>
+          <td>${o[segment].sat}</td>
+          <td class="${scoreClass}">${o[segment].score}</td>
+        </tr>`);
+      });
+
+      dataTable = $('#outcomesTable').DataTable({
+        paging: false,
+        searching: true,
+        info: false
+      });
+    }
+
+    $(document).ready(function() {
+      render("baixo");
+      $('#segmentSelect').on('change', function() {
+        render(this.value);
+      });
+    });
+  </script>
+</body>
+</html>
