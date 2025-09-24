@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Outcomes Logística - Importância x Satisfação</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 6px;
+      text-align: left;
+    }
+    th {
+      cursor: pointer;
+      background-color: #f2f2f2;
+    }
+    th.asc::after {
+      content: " ▲";
+      font-size: 12px;
+    }
+    th.desc::after {
+      content: " ▼";
+      font-size: 12px;
+    }
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <h2>Outcomes - Importância x Satisfação</h2>
+  <label for="logistica">Filtrar por logística:</label>
+  <select id="logistica" onchange="atualizarGrafico()">
+    <option value="Correios">Correios</option>
+    <option value="Enviali">Enviali</option>
+    <option value="Frenet">Frenet</option>
+    <option value="Jadlog">Jadlog</option>
+    <option value="Loggi">Loggi</option>
+    <option value="Mandae">Mandae</option>
+    <option value="MelhorEnvio">MelhorEnvio</option>
+    <option value="Total Express">Total Express</option>
+  </select>
+
+  <div id="grafico" style="width:100%;height:70vh;"></div>
+
+  <h3>Outcomes filtrados</h3>
+  <table id="tabelaOutcomes">
+    <thead>
+      <tr>
+        <th onclick="ordenarTabela(0)">Outcome</th>
+        <th onclick="ordenarTabela(1)">Importância</th>
+        <th onclick="ordenarTabela(2)">Satisfação</th>
+        <th onclick="ordenarTabela(3)">Opportunity Score</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const dados = [
+      {job:"aumentar a competitividade nas modalidades e transportadoras oferecidas aos clientes",
+        imp:{Correios:9.52,Enviali:9.6,Frenet:9.6,Jadlog:9.75,Loggi:9.8,Mandae:10.0,MelhorEnvio:8.93,"Total Express":8.83},
+        sat:{Correios:5.35,Enviali:6.6,Frenet:8.0,Jadlog:5.0,Loggi:5.4,Mandae:8.0,MelhorEnvio:6.4,"Total Express":7.0}},
+      {job:"facilitar a emissão de documentos e etiquetas de forma prática",
+        imp:{Correios:9.74,Enviali:9.2,Frenet:9.4,Jadlog:9.5,Loggi:10.0,Mandae:10.0,MelhorEnvio:9.9,"Total Express":10.0},
+        sat:{Correios:7.48,Enviali:9.2,Frenet:7.0,Jadlog:5.75,Loggi:7.6,Mandae:10.0,MelhorEnvio:7.58,"Total Express":5.67}},
+      {job:"garantir entregas dentro do prazo prometido",
+        imp:{Correios:9.84,Enviali:9.6,Frenet:10.0,Jadlog:10.0,Loggi:9.2,Mandae:10.0,MelhorEnvio:9.68,"Total Express":9.83},
+        sat:{Correios:6.74,Enviali:8.4,Frenet:8.8,Jadlog:4.0,Loggi:7.0,Mandae:9.0,MelhorEnvio:7.05,"Total Express":7.5}},
+      {job:"integrar facilmente sua logística com sistemas de gestão (ERP, loja virtual, etc.)",
+        imp:{Correios:9.71,Enviali:9.4,Frenet:10.0,Jadlog:9.5,Loggi:10.0,Mandae:10.0,MelhorEnvio:9.75,"Total Express":9.33},
+        sat:{Correios:6.52,Enviali:7.4,Frenet:7.6,Jadlog:5.25,Loggi:6.2,Mandae:10.0,MelhorEnvio:6.45,"Total Express":5.33}},
+      {job:"minimizar atrasos ou falhas na coleta e transporte",
+        imp:{Correios:9.84,Enviali:9.6,Frenet:10.0,Jadlog:10.0,Loggi:9.6,Mandae:10.0,MelhorEnvio:9.72,"Total Express":9.83},
+        sat:{Correios:6.26,Enviali:8.6,Frenet:7.4,Jadlog:4.5,Loggi:5.0,Mandae:8.0,MelhorEnvio:6.88,"Total Express":7.33}},
+      {job:"oferecer rastreamento claro e atualizado em tempo real ao cliente",
+        imp:{Correios:9.58,Enviali:9.6,Frenet:10.0,Jadlog:9.5,Loggi:10.0,Mandae:10.0,MelhorEnvio:9.6,"Total Express":9.83},
+        sat:{Correios:6.97,Enviali:8.2,Frenet:8.8,Jadlog:4.75,Loggi:5.2,Mandae:9.0,MelhorEnvio:7.05,"Total Express":5.33}},
+      {job:"oferecer suporte proativo e eficiente ao cliente final em caso de problemas",
+        imp:{Correios:9.77,Enviali:9.4,Frenet:9.8,Jadlog:10.0,Loggi:9.6,Mandae:10.0,MelhorEnvio:9.75,"Total Express":9.83},
+        sat:{Correios:5.06,Enviali:7.2,Frenet:6.2,Jadlog:4.0,Loggi:5.0,Mandae:7.0,MelhorEnvio:4.82,"Total Express":6.0}},
+      {job:"receber relatórios e indicadores de desempenho logístico",
+        imp:{Correios:9.03,Enviali:9.2,Frenet:9.6,Jadlog:9.25,Loggi:9.6,Mandae:10.0,MelhorEnvio:8.82,"Total Express":9.5},
+        sat:{Correios:5.9,Enviali:7.8,Frenet:6.8,Jadlog:1.5,Loggi:6.6,Mandae:8.0,MelhorEnvio:5.92,"Total Express":4.5}},
+      {job:"reduzir o tempo de resolução de problemas de entrega (atrasos, extravios, avarias)",
+        imp:{Correios:9.81,Enviali:9.6,Frenet:10.0,Jadlog:9.75,Loggi:10.0,Mandae:10.0,MelhorEnvio:9.75,"Total Express":9.83},
+        sat:{Correios:5.13,Enviali:7.2,Frenet:5.8,Jadlog:1.5,Loggi:5.2,Mandae:7.0,MelhorEnvio:5.55,"Total Express":5.33}},
+      {job:"reduzir os custos de frete em cada pedido",
+        imp:{Correios:9.45,Enviali:9.6,Frenet:9.0,Jadlog:8.25,Loggi:8.0,Mandae:10.0,MelhorEnvio:9.6,"Total Express":9.5},
+        sat:{Correios:5.42,Enviali:7.0,Frenet:6.8,Jadlog:5.75,Loggi:5.6,Mandae:8.0,MelhorEnvio:6.6,"Total Express":5.83}},
+      {job:"ter flexibilidade para negociar condições comerciais e operacionais de acordo com o porte do seu negócio",
+        imp:{Correios:9.0,Enviali:9.2,Frenet:8.8,Jadlog:10.0,Loggi:10.0,Mandae:10.0,MelhorEnvio:8.2,"Total Express":9.17},
+        sat:{Correios:4.87,Enviali:6.8,Frenet:8.2,Jadlog:3.0,Loggi:6.6,Mandae:8.0,MelhorEnvio:5.52,"Total Express":6.0}}
+    ];
+
+    function calcularOpportunityScore(imp, sat) {
+      return (imp + (imp - sat)).toFixed(2);
+    }
+
+    function atualizarGrafico() {
+      const logistica = document.getElementById("logistica").value;
+      const x = dados.map(d => d.imp[logistica]);
+      const y = dados.map(d => d.sat[logistica]);
+      const textos = dados.map(d => d.job);
+
+      const trace = {
+        x: x,
+        y: y,
+        mode: 'markers+text',
+        type: 'scatter',
+        text: textos,
+        textposition: 'top center',
+        marker: { size: 12, color: '#d62728' }
+      };
+
+      const linhaEquilibrio = {
+        x: [0, 10],
+        y: [0, 10],
+        mode: 'lines',
+        line: { dash: 'dot', color: 'green' },
+        name: 'Equilíbrio'
+      };
+
+      const linhaUnderserved = {
+        x: [5, 10],
+        y: [0, 10],
+        mode: 'lines',
+        line: { dash: 'dot', color: 'red' },
+        name: 'Underserved'
+      };
+
+      const layout = {
+        xaxis: { title: 'Importância', range: [0, 10] },
+        yaxis: { title: 'Satisfação', range: [0, 10] },
+        title: `Importância x Satisfação - ${logistica}`,
+        showlegend: true
+      };
+
+      Plotly.newPlot('grafico', [trace, linhaEquilibrio, linhaUnderserved], layout);
+
+      const tbody = document.querySelector("#tabelaOutcomes tbody");
+      tbody.innerHTML = "";
+      dados.forEach(d => {
+        const imp = d.imp[logistica];
+        const sat = d.sat[logistica];
+        const opp = calcularOpportunityScore(imp, sat);
+        tbody.innerHTML += `<tr><td>${d.job}</td><td>${imp}</td><td>${sat}</td><td>${opp}</td></tr>`;
+      });
+    }
+
+    function ordenarTabela(colIndex) {
+      const table = document.getElementById("tabelaOutcomes");
+      const headers = table.querySelectorAll("th");
+      headers.forEach(h => h.classList.remove("asc", "desc"));
+
+      let switching = true;
+      let dir = table.getAttribute("data-sort-dir") === "desc" ? "asc" : "desc";
+      table.setAttribute("data-sort-dir", dir);
+
+      while (switching) {
+        switching = false;
+        const rows = Array.from(table.rows).slice(1);
+        for (let i = 0; i < rows.length - 1; i++) {
+          let shouldSwitch = false;
+          const x = rows[i].getElementsByTagName("TD")[colIndex];
+          const y = rows[i + 1].getElementsByTagName("TD")[colIndex];
+
+          let xVal = isNaN(parseFloat(x.innerHTML)) ? x.innerHTML.toLowerCase() : parseFloat(x.innerHTML);
+          let yVal = isNaN(parseFloat(y.innerHTML)) ? y.innerHTML.toLowerCase() : parseFloat(y.innerHTML);
+
+          if ((dir === "asc" && xVal > yVal) || (dir === "desc" && xVal < yVal)) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+      }
+      headers[colIndex].classList.add(dir);
+    }
+
+    atualizarGrafico();
+  </script>
+</body>
+</html>
